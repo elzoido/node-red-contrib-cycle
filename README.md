@@ -6,3 +6,5 @@ For the first message, the flow will be routed to the first output, on the next 
 The internal state is only stored in memory, so after restarting Node-RED, the next message will be routed to the first output.
 
 Multiple nodes may be used in the same flow without interfering with each other.
+
+Sending a message with msg.reset set, will stop that flow and the next message will be routed to the first output.
