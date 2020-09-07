@@ -8,3 +8,5 @@ The internal state is only stored in memory, so after restarting Node-RED, the n
 Multiple nodes may be used in the same flow without interfering with each other.
 
 Sending a message with msg.reset set, will stop that flow and the next message will be routed to the first output.
+
+Sending an integer value with msg.skip will use that value to increment the internal counter (default: skip = 1). So with msg.skip = -1 it will cycle backwards.

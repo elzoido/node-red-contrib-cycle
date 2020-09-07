@@ -10,8 +10,16 @@ module.exports = function(RED) {
             if (msg.hasOwnProperty("reset")) {
                 nodeContext.set('output', 0);
             } else {
+                var skip = 1;
+                if (msg.hasOwnProperty('skip') && Number.isInteger(msg.skip.STATE)) {
+                    skip = msg.skip.STATE;
+                }
                 out[output] = msg;
-                output = (output + 1) % conf_outputs;
+                output += skip;
+                while (output < 0) {
+                    output += conf_outputs;
+                }
+                output %= conf_outputs;
                 nodeContext.set('output', output);
                 node.send(out);
             }
